@@ -375,7 +375,7 @@ fi
 
 if [ "$XHTTP_ENABLED" = "1" ]; then
     ENCODED_XHTTP_PATH=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$XHTTP_PATH'))")
-    XHTTP_URI="vless://$XHTTP_UUID@$URI_HOST:443?type=xhttp&mode=packet-up&security=tls&path=$ENCODED_XHTTP_PATH$SNI_PARAM&alpn=h2%2Chttp%2F1.1&allowInsecure=$ALLOW_INSECURE#NEXUS"
+    XHTTP_URI="vless://$XHTTP_UUID@$URI_HOST:443?type=xhttp&mode=packet-up&security=tls&path=$ENCODED_XHTTP_PATH$SNI_PARAM&alpn=h2&allowInsecure=$ALLOW_INSECURE#NEXUS"
     echo "$XHTTP_URI" | qrencode -t utf8
     echo ""
     echo "$XHTTP_URI"
@@ -384,7 +384,7 @@ fi
 
 if [ "$WS_ENABLED" = "1" ]; then
     ENCODED_WS_PATH=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$WS_PATH'))")
-    WS_URI="vless://$WS_UUID@$URI_HOST:443?type=ws&security=tls&path=$ENCODED_WS_PATH$SNI_PARAM&alpn=h2%2Chttp%2F1.1&allowInsecure=$ALLOW_INSECURE#NEXUS"
+    WS_URI="vless://$WS_UUID@$URI_HOST:443?type=ws&security=tls&path=$ENCODED_WS_PATH$SNI_PARAM&alpn=http%2F1.1&allowInsecure=$ALLOW_INSECURE#NEXUS"
     echo "$WS_URI" | qrencode -t utf8
     echo ""
     echo "$WS_URI"
